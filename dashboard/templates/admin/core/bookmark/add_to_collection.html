@@ -1,0 +1,83 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="p-6 bg-white rounded shadow">
+    <h2 class="text-xl font-semibold mb-4">{% trans "Add Bookmarks to Collection" %}</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="add_to_collection">
+        <input type="hidden" name="apply" value="1">
+        
+        {% for obj in queryset %}
+        <input type="hidden" name="_selected_action" value="{{ obj.pk }}">
+        {% endfor %}
+        
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-2">{% trans "Select Collection" %}</label>
+            <select name="collection_id" class="w-full md:w-1/2 p-2 border rounded">
+                <option value="">-- {% trans "None" %} --</option>
+                {% for collection in collections %}
+                <option value="{{ collection.id }}">{{ collection.name }} ({{ collection.bookmarks.count }} {% trans "items" %})</option>
+                {% endfor %}
+            </select>
+            
+            {% if not collections %}
+            <p class="text-sm text-yellow-600 mt-2">
+                {% trans "You don't have any collections yet." %}
+                <a href="{% url 'admin:core_bookmarkcollection_add' %}" class="text-blue-600 underline">
+                    {% trans "Create one now" %}
+                </a>
+            </p>
+            {% endif %}
+        </div>
+        
+        <div class="mb-4">
+            <p class="text-sm text-gray-600">
+                {% blocktrans count counter=queryset.count %}
+                This will update 1 bookmark.
+                {% plural %}
+                This will update {{ counter }} bookmarks.
+                {% endblocktrans %}
+            </p>
+        </div>
+        
+        <div class="flex gap-2">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                {% trans "Apply" %}
+            </button>
+            <a href="." class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+                {% trans "Cancel" %}
+            </a>
+        </div>
+    </form>
+    
+    <hr class="my-6">
+    
+    <h3 class="text-lg font-medium mb-2">{% trans "Selected Bookmarks" %}</h3>
+    <div class="bg-gray-50 p-4 rounded max-h-60 overflow-y-auto">
+        <ul class="list-disc pl-5">
+            {% for bookmark in queryset %}
+            <li class="mb-1">
+                {% if bookmark.content_object %}
+                    {% if bookmark.content_type.model == "book" %}
+                        📚 {{ bookmark.content_object.title }}
+                    {% elif bookmark.content_type.model == "bookpage" %}
+                        📄 {{ bookmark.content_object.book.title }} - {% trans "Page" %} {{ bookmark.content_object.page_number }}
+                    {% elif bookmark.content_type.model == "hadith" %}
+                        📖 {{ bookmark.content_object.code }} - {{ bookmark.content_object.source }}
+                    {% elif bookmark.content_type.model == "narrator" %}
+                        👤 {{ bookmark.content_object.name }}
+                    {% else %}
+                        {{ bookmark.content_type.model }} #{{ bookmark.object_id }}
+                    {% endif %}
+                {% else %}
+                    <span class="text-red-600">{% trans "Deleted content" %} ({{ bookmark.content_type.model }} #{{ bookmark.object_id }})</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

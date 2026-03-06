@@ -1,0 +1,61 @@
+﻿# pip freeze | Out-File -FilePath requirements.txt -Encoding UTF8
+# ===== DJANGO CORE & DEPENDENCIES =====
+# Django framework and essential dependencies
+Django==5.2
+asgiref==3.11.1
+sqlparse==0.5.2
+python-decouple==3.8
+python-dotenv==1.0.1
+gunicorn==23.0.0
+whitenoise==6.8.2
+
+# ===== DJANGO REST FRAMEWORK & DEPENDENCIES =====
+# DRF core and related packages
+djangorestframework==3.16.1
+django-filter==24.3
+django-cors-headers==4.4.0
+drf-spectacular==0.29.0
+uritemplate==4.2.0
+inflection==0.5.1
+PyYAML==6.0.3
+
+# ===== DATABASE & ORM =====
+# PostgreSQL adapter
+psycopg==3.2.1
+
+# ===== AUTHENTICATION & SECURITY =====
+# HTTP requests and OAuth
+requests==2.32.3
+requests-oauthlib==2.0.0
+oauthlib==3.3.1
+certifi==2026.2.25
+charset-normalizer==3.4.4
+idna==3.11
+urllib3==2.6.3
+
+# ===== ADMIN INTERFACE =====
+# Enhanced Django admin
+django-unfold==0.81.0
+djangoql==0.19.1
+ply==3.11
+pillow==11.0.0
+
+# ===== JSON SCHEMA VALIDATION =====
+# JSON validation utilities
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+referencing==0.37.0
+rpds-py==0.30.0
+attrs==25.4.0
+
+# ===== DEVELOPMENT & DEBUGGING =====
+# Development tools and utilities
+django-debug-toolbar==6.2.0
+python-json-logger==2.0.7
+python-discovery==1.0.0
+
+# ===== UTILITY LIBRARIES =====
+# General purpose utilities
+six==1.17.0
+python-dateutil==2.8.2
+colorama==0.4.6

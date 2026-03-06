@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+
+/* Chain links styling */
+.field-narrator_link a {
+    font-weight: 500;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.field-narrator_link a:hover {
+    text-decoration: underline;
+}
+
+/* Position badges */
+.field-position {
+    font-weight: 600;
+    font-family: monospace;
+}
+
+/* Alternating row colors for chain */
+.inline-group .tabular tr.form-row:nth-child(even) {
+    background-color: #f9fafb;
+}

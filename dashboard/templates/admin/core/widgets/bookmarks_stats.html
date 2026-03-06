@@ -1,0 +1,50 @@
+{% load i18n %}
+
+<div class="p-4">
+    <div class="grid grid-cols-2 gap-4 mb-4">
+        <div class="bg-blue-50 p-3 rounded text-center">
+            <div class="text-2xl font-bold text-blue-700">{{ total_bookmarks }}</div>
+            <div class="text-xs text-blue-600">{% trans "Total Bookmarks" %}</div>
+        </div>
+        <div class="bg-purple-50 p-3 rounded text-center">
+            <div class="text-2xl font-bold text-purple-700">{{ total_collections }}</div>
+            <div class="text-xs text-purple-600">{% trans "Collections" %}</div>
+        </div>
+    </div>
+    
+    <div class="mb-4">
+        <h4 class="text-sm font-medium mb-2">{% trans "By Content Type" %}</h4>
+        <div class="space-y-2">
+            <div class="flex justify-between items-center">
+                <span class="text-sm">📚 {% trans "Books" %}</span>
+                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">{{ books_count }}</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-sm">📄 {% trans "Pages" %}</span>
+                <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">{{ pages_count }}</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-sm">📖 {% trans "Hadith" %}</span>
+                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">{{ hadith_count }}</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-sm">👤 {% trans "Narrators" %}</span>
+                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">{{ narrator_count }}</span>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <h4 class="text-sm font-medium mb-2">{% trans "Most Active Users" %}</h4>
+        <ul class="text-sm">
+            {% for user in active_users %}
+            <li class="flex justify-between py-1 border-b border-gray-100">
+                <span>{{ user.user__username }}</span>
+                <span class="bg-gray-200 px-2 rounded text-xs">{{ user.count }}</span>
+            </li>
+            {% empty %}
+            <li class="text-gray-500 text-xs">{% trans "No data yet" %}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
