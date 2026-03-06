@@ -1,5 +1,12 @@
 version: '3.10'
 
+# IMPORTANT: This docker-compose uses PostgreSQL by default.
+# If you want to use SQLite instead:
+# 1. Comment out the 'db' service below
+# 2. Set DB_ENGINE=django.db.backends.sqlite3 in .env
+# 3. Change web depends_on to remove db dependency
+# 4. Remove db service from depends_on in web service
+
 volumes:
   postgres_data:
     driver: local
@@ -74,7 +81,7 @@ services:
     networks:
       - project_network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/ || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/ || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3

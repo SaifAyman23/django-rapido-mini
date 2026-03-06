@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # Local apps
     "accounts",
     "common",
+    "dashboard",
     
     # Django core
     "django.contrib.admin",

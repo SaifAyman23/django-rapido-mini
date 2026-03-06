@@ -9,55 +9,16 @@ from django.utils.translation import gettext_lazy as _
 # Unfold
 ######################################################################
 UNFOLD = {
-    "STUDIO": {
-        # "header_sticky": True,
-        # "layout_style": "boxed",
-        # "header_variant": "dark",
-        # "sidebar_style": "minimal",
-        # "sidebar_variant": "dark",
-        # "site_banner": "Custom global message",
-    },
-    "SITE_TITLE": _("Rapido Mini Admin"),
-    "SITE_HEADER": _("Rapido Mini Admin"),
-    "SITE_SUBHEADER": _("Lightining fast setup!"),
-    "SITE_SYMBOL": "dashboard",
-    # "SITE_ICON": lambda request: static("dashboard/images/logo.svg"),
-    # "SITE_URL": None,
-    # "SITE_DROPDOWN": [
-    #     {
-    #         "icon": "diamond",
-    #         "title": _("Unfold theme repository"),
-    #         "link": "https://github.com/unfoldadmin/django-unfold",
-    #     },
-    #     {
-    #         "icon": "rocket_launch",
-    #         "title": _("Turbo boilerplate repository"),
-    #         "link": "https://github.com/unfoldadmin/turbo",
-    #     },
-    #     {
-    #         "icon": "description",
-    #         "title": _("Technical documentation"),
-    #         "link": "https://unfoldadmin.com/docs/",
-    #     },
-    # ],
+    "SITE_TITLE": _("Django Rapido MINI"),
+    "SITE_HEADER": _("Django Rapido MINI"),
+    "SITE_SUBHEADER": _("Lightweight Django template"),
     "SHOW_HISTORY": True,
     "SHOW_LANGUAGES": True,
     "LANGUAGE_FLAGS": {
-        "ar": "🇸🇦",
-        "en": "🇺🇸",
+        "ar": "sa",
+        "en": "us",
     },
-    "ENVIRONMENT": "dashboard.environment_callback",
-    "DASHBOARD_CALLBACK": "dashboard.dashboard_callback",
-    "LOGIN": {
-        "image": lambda request: static("dashboard/images/login-bg.jpg"),
-        "form": "dashboard.forms.LoginForm",
-    },
-    "STYLES": [
-        lambda request: static("css/style.css"),
-    ],
-    "SCRIPTS": [
-        # lambda request: static("js/chart.min.js"),
-    ],
+}
     "COLORS": {
         "base": {
             "50": "oklch(99% 0 0)",               # #fcfcfc - Pure white
