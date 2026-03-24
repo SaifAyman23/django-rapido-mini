@@ -47,7 +47,7 @@ fi
 # ===========================
 # 3. DJANGO SETUP (web and workers only)
 # ===========================
-if [ "$CONTAINER_ROLE" = "web" ] || [ "$CONTAINER_ROLE" = "celery_worker" ]; then
+if [ "$CONTAINER_ROLE" = "web" ]; then
     echo ""
     echo "Running Django setup tasks..."
     
