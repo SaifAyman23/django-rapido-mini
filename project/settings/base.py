@@ -380,36 +380,24 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "verbose",
         },
-        "file": {
-            "class": "logging.handlers.RotatingFileHandler",
-            "filename": BASE_DIR / "logs" / "django.log",
-            "maxBytes": 1024 * 1024 * 10,  # 10MB
-            "backupCount": 5,
-            "formatter": "verbose",
-        },
     },
     "root": {
-        "handlers": ["console", "file"],
+        "handlers": ["console"],
         "level": os.getenv("LOG_LEVEL", "INFO"),
     },
     "loggers": {
         "django": {
-            "handlers": ["console", "file"],
+            "handlers": ["console"],
             "level": os.getenv("LOG_LEVEL", "INFO"),
             "propagate": False,
         },
         "celery": {
-            "handlers": ["console", "file"],
+            "handlers": ["console"],
             "level": os.getenv("LOG_LEVEL", "INFO"),
             "propagate": False,
         },
     },
 }
-
-# Create logs directory
-LOG_DIR = BASE_DIR / "logs"
-LOG_DIR.mkdir(exist_ok=True)
-
 
 # ===========================
 # Docker Configuration
